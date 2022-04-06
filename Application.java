@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package CallBreak;
+package CallBreak1;
 
 import java.util.ArrayList;
 
@@ -15,16 +15,15 @@ public class Application {
     public static void main(String []args){
 
         GenerateCards gCards = new GenerateCards();
-        ArrayList<Card> cardsList;
-        
-        cardsList = gCards.CreateCards();
         
         CutForSeat cfsObj = new CutForSeat();
-        cfsObj.CutForSeatLogic(cardsList);
+        cfsObj.CutForSeatLogic(gCards.cardsList);
         
-        CardsDistribution cdObj = new CardsDistribution();
-        cdObj.CardsDistributionLogic(cardsList);
+//        CardsDistribution cdObj = new CardsDistribution();
+//        cdObj.CardsDistributionLogic(gCards.cardsList);
         
+        TrickWinner tw = new TrickWinner();
+        tw.trickWinnerCalculation();
         
     }
     

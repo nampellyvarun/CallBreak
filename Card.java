@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package CallBreak;
+package CallBreak1;
 
 import java.util.Objects;
 
@@ -11,33 +11,42 @@ import java.util.Objects;
  * @author srivarun
  */
 public class Card implements Comparable<Card>{
-    private String name;
-    private String suit;
+    private int cardNumber;
+    private char suit;
     private Boolean isFaceCard;
-    private int rank;
+    int playerNo;
+    
 
 
-    public Card(String name, String suit, Boolean isFaceCard, int rank) {
-        this.name = name;
+    public Card(int cardNumber, char suit, Boolean isFaceCard) {
+        this.cardNumber = cardNumber;
         this.suit = suit;
         this.isFaceCard = isFaceCard;
-        this.rank = rank;
+        this.playerNo=0;
+    }
+
+    public int getPlayerNo() {
+        return playerNo;
+    }
+
+    public void setPlayerNo(int playerNo) {
+        this.playerNo = playerNo;
     }
     
 
-    public String getName() {
-        return name;
+    public int getCardNumber() {
+        return cardNumber;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setCardNumber(int cardNumber) {
+        this.cardNumber = cardNumber;
     }
 
-    public String getSuit() {
+    public char getSuit() {
         return suit;
     }
 
-    public void setSuit(String suit) {
+    public void setSuit(char suit) {
         this.suit = suit;
     }
 
@@ -49,21 +58,14 @@ public class Card implements Comparable<Card>{
         this.isFaceCard = isFaceCard;
     }
 
-    public int getRank() {
-        return rank;
-    }
-
-    public void setRank(int rank) {
-        this.rank = rank;
-    }
 
     @Override
     public int hashCode() {
-        int hash = 7;
-        hash = 83 * hash + Objects.hashCode(this.name);
-        hash = 83 * hash + Objects.hashCode(this.suit);
-        hash = 83 * hash + Objects.hashCode(this.isFaceCard);
-        hash = 83 * hash + this.rank;
+        int hash = 5;
+        hash = 97 * hash + Objects.hashCode(this.cardNumber);
+        hash = 97 * hash + Objects.hashCode(this.suit);
+        hash = 97 * hash + Objects.hashCode(this.isFaceCard);
+        hash = 97 * hash + this.playerNo;
         return hash;
     }
 
@@ -79,10 +81,10 @@ public class Card implements Comparable<Card>{
             return false;
         }
         final Card other = (Card) obj;
-        if (this.rank != other.rank) {
+        if (this.playerNo != other.playerNo) {
             return false;
         }
-        if (!Objects.equals(this.name, other.name)) {
+        if (!Objects.equals(this.cardNumber, other.cardNumber)) {
             return false;
         }
         if (!Objects.equals(this.suit, other.suit)) {
@@ -93,20 +95,26 @@ public class Card implements Comparable<Card>{
 
     @Override
     public String toString() {
-        return name+" of "+suit+" Rank is "+rank;   
+        return ""+cardNumber+" of "+suit +" p:"+playerNo;
     }
 
     @Override
     public int compareTo(Card t) {
-        if(this.rank < t.rank){
-            return -1;
-        }
-        else if(this.rank > t.rank){
+        if((int)this.suit  < (int)t.suit){
             return 1;
         }
+        else if((int)this.suit  > (int)t.suit){
+            return -1;
+        }
         else{
-            return 0;
+            if(this.cardNumber < t.cardNumber){
+                return 1;
+            }
+            else{
+                return -1;
+            }
         }
     }
+
 }
 
