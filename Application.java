@@ -19,9 +19,6 @@ public class Application {
         CutForSeat cfsObj = new CutForSeat();
         cfsObj.CutForSeatLogic(gCards.cardsList);
         
-//        CardsDistribution cdObj = new CardsDistribution();
-//        cdObj.CardsDistributionLogic(gCards.cardsList);
-        
         TrickWinner tw = new TrickWinner();
         tw.trickWinnerCalculation();
         

@@ -24,12 +24,8 @@ public class CutForSeat {
 
 
     public void CutForSeatLogic(ArrayList<Card> cardsList) {
-
-        HashMap<Integer,Card> cfs = new HashMap<>();
         
         ArrayList<Card> alCFSCards = new ArrayList<>();
-        
-        HashSet<Integer> playerNumber = new HashSet<>();
         
         GenerateCards gCards = new GenerateCards();
         
@@ -42,63 +38,90 @@ public class CutForSeat {
 
         
 //Generating 4 random cards and adding it to the HashSet
-        for(int i=0;i<4;i++){
-            alCFSCards.add(cardsList.get(cnl.remove(0)));
+        for(int i=1;i<=4;i++){
+            Card c = cardsList.get(cnl.remove(0));
+            c.setPlayerNo(i);
+            alCFSCards.add(c);
         }
               
-//Assigning each player with a card
-        for(int i=0;i<4;i++){
-            cfs.put(i+1,alCFSCards.get(i));
-        }
-        
-        Iterator<Map.Entry<Integer, Card>> itr = cfs.entrySet().iterator();
-        Map.Entry<Integer,Card> entryHigh = itr.next(); 
-        Card cHigh = entryHigh.getValue();
-        int player=entryHigh.getKey();
-        int highCard=cHigh.getCardNumber();
-        char suit = cHigh.getSuit();
-        while(itr.hasNext())
-        {
-            entryHigh = itr.next();
-            if(entryHigh.getValue().getCardNumber() > highCard){
-                highCard = entryHigh.getValue().getCardNumber();
-                cHigh=entryHigh.getValue();
-                player = entryHigh.getKey();
+        Iterator<Card> itr1 = alCFSCards.iterator();
+        Card cDistributor = itr1.next();
+                
+        int highCard=cDistributor.getCardNumber();
+        char suit = cDistributor.getSuit();
+        while(itr1.hasNext()){
+            Card c = itr1.next();
+            if(c.getCardNumber() > highCard){
+                highCard = c.getCardNumber();
+                cDistributor = c;
             }
-            else if(entryHigh.getValue().getCardNumber() == highCard){
-                  if((int)entryHigh.getValue().getSuit()>(int)suit){
-                      cHigh=entryHigh.getValue();
+            else if(c.getCardNumber() == highCard){
+                  if((int)c.getSuit()>(int)suit){
+                      cDistributor = c;
                   }
             }
         }
         
-        Iterator<Map.Entry<Integer, Card>> itr2 = cfs.entrySet().iterator();
-        Map.Entry<Integer,Card> entryLow = itr2.next();
-        Card cLow = entryLow.getValue();
-        int player2=entryLow.getKey();
-        int lowCard=cLow.getCardNumber();
-        char suit2 = cLow.getSuit();
-        while(itr2.hasNext())
-        {
-            entryLow = itr2.next();
-            if(entryLow.getValue().getCardNumber() < lowCard){
-                lowCard = entryLow.getValue().getCardNumber();
-                cLow=entryLow.getValue();
-                player2 = entryLow.getKey();
+        Iterator<Card> itr2 = alCFSCards.iterator();
+        Card cDiscarder = itr2.next();
+        
+        int lowCard=cDistributor.getCardNumber();
+        suit = cDistributor.getSuit();
+        
+        while(itr2.hasNext()){
+            Card c = itr2.next();
+            if(c.getCardNumber() < lowCard){
+                lowCard = c.getCardNumber();
+                cDiscarder = c;
             }
-            else if(entryLow.getValue().getCardNumber() == lowCard){
-                  if((int)entryLow.getValue().getSuit()<(int)suit2){
-                      cLow=entryLow.getValue();
+            else if(c.getCardNumber() == lowCard){
+                  if((int)c.getSuit()>(int)suit){
+                      cDiscarder = c;
                   }
             }
         }
+        
+        System.out.println(alCFSCards);
+        ArrayList<Card> alSeatArrangement = new ArrayList<>();
+        alSeatArrangement.add(cDistributor);
+        alSeatArrangement.add(cDiscarder);
+        alCFSCards.remove(cDistributor);
+        alCFSCards.remove(cDiscarder);
+        
+        Iterator<Card> itr3 = alCFSCards.iterator();
+        Card c2 = itr3.next();
+        
+        lowCard=c2.getCardNumber();
+        suit = c2.getSuit();
+        
+        while(itr3.hasNext()){
+            Card c = itr3.next();
+            if(c.getCardNumber() < lowCard){
+                lowCard = c.getCardNumber();
+                c2 = c;
+            }
+            else if(c.getCardNumber() == lowCard){
+                  if((int)c.getSuit()>(int)suit){
+                      c2 = c;
+                  }
+            }
+        }
+        alSeatArrangement.add(c2);
+        alCFSCards.remove(c2);
+        alSeatArrangement.add(alCFSCards.remove(0));
+        
+
 
 //Displaying the player who Distributes the cards and who Discards the cards
-        System.out.println(cfs);
-//        System.out.println(player+"-"+cHigh);
-//        System.out.println(player2+"-"+cLow);
-        System.out.println("Player "+player+" Distributes the cards and Player "+player2+" Discards the first Card");
+
+        System.out.println(alSeatArrangement);
+        
+//        System.out.println(player+"-"+cDistributor);
+//        System.out.println(player2+"-"+cDiscarder);
+        System.out.println("Player "+cDistributor.getPlayerNo()+" Distributes the cards and Player "+cDiscarder.getPlayerNo()+" Discards the first Card");
         
     }
+    
+    
     
 }

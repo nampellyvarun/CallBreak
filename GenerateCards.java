@@ -81,7 +81,6 @@ public class GenerateCards {
         for(int i=0;i<52;i++){
             cnl.add(i);
         }
-        
         return cnl;
     }
     

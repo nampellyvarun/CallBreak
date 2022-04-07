@@ -13,13 +13,24 @@ import java.util.ArrayList;
 public class Player {
     private String name;
     private ArrayList<Card> playerCards;
+    private int tricksWon;
+    private int bid;
     private int score;
 
-    public Player(String name, ArrayList<Card> playerCards, int score) {
+    public Player(String name, ArrayList<Card> playerCards, int tricksWon, int bid, int score) {
         this.name = name;
         this.playerCards = playerCards;
+        this.tricksWon = tricksWon;
+        this.bid = bid;
         this.score = score;
     }
+
+    public Player(String name, ArrayList<Card> playerCards) {
+        this.name = name;
+        this.playerCards = playerCards;
+    }
+    
+    
 
     public String getName() {
         return name;
@@ -37,6 +48,22 @@ public class Player {
         this.playerCards = playerCards;
     }
 
+    public int getTricksWon() {
+        return tricksWon;
+    }
+
+    public void setTricksWon(int tricksWon) {
+        this.tricksWon = tricksWon;
+    }
+
+    public int getBid() {
+        return bid;
+    }
+
+    public void setBid(int bid) {
+        this.bid = bid;
+    }
+
     public int getScore() {
         return score;
     }
@@ -47,6 +74,7 @@ public class Player {
 
     @Override
     public String toString() {
-        return "Players{" + "name=" + name + ", playerCards=" + playerCards + ", score=" + score + '}';
+        return "Player{" + "name=" + name + ", playerCards=" + playerCards + ", tricksWon=" + tricksWon + ", bid=" + bid + ", score=" + score + '}';
     }
+
 }
