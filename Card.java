@@ -14,7 +14,7 @@ public class Card implements Comparable<Card>{
     private int cardNumber;
     private char suit;
     private Boolean isFaceCard;
-    int playerNo;
+    int playerId;
     
 
 
@@ -22,15 +22,15 @@ public class Card implements Comparable<Card>{
         this.cardNumber = cardNumber;
         this.suit = suit;
         this.isFaceCard = isFaceCard;
-        this.playerNo=0;
+        this.playerId=0;
     }
 
-    public int getPlayerNo() {
-        return playerNo;
+    public int getPlayerId() {
+        return playerId;
     }
 
-    public void setPlayerNo(int playerNo) {
-        this.playerNo = playerNo;
+    public void setPlayerId(int playerId) {
+        this.playerId = playerId;
     }
     
 
@@ -65,7 +65,7 @@ public class Card implements Comparable<Card>{
         hash = 97 * hash + Objects.hashCode(this.cardNumber);
         hash = 97 * hash + Objects.hashCode(this.suit);
         hash = 97 * hash + Objects.hashCode(this.isFaceCard);
-        hash = 97 * hash + this.playerNo;
+        hash = 97 * hash + this.playerId;
         return hash;
     }
 
@@ -81,7 +81,7 @@ public class Card implements Comparable<Card>{
             return false;
         }
         final Card other = (Card) obj;
-        if (this.playerNo != other.playerNo) {
+        if (this.playerId != other.playerId) {
             return false;
         }
         if (!Objects.equals(this.cardNumber, other.cardNumber)) {
@@ -95,8 +95,10 @@ public class Card implements Comparable<Card>{
 
     @Override
     public String toString() {
-        return ""+cardNumber+" of "+suit +" p:"+playerNo;
+        return "cardNumber=" + cardNumber + ",suit=" + suit + ",playerId=" + playerId;
     }
+
+
 
     @Override
     public int compareTo(Card t) {

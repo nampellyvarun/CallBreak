@@ -23,7 +23,7 @@ import java.util.Set;
 public class CutForSeat {
 
 
-    public void CutForSeatLogic(ArrayList<Card> cardsList) {
+    public ArrayList<Card> CutForSeatLogic(ArrayList<Card> cardsList) {
         
         ArrayList<Card> alCFSCards = new ArrayList<>();
         
@@ -40,7 +40,7 @@ public class CutForSeat {
 //Generating 4 random cards and adding it to the HashSet
         for(int i=1;i<=4;i++){
             Card c = cardsList.get(cnl.remove(0));
-            c.setPlayerNo(i);
+            c.setPlayerId(i);
             alCFSCards.add(c);
         }
               
@@ -114,12 +114,19 @@ public class CutForSeat {
 
 //Displaying the player who Distributes the cards and who Discards the cards
 
-        System.out.println(alSeatArrangement);
-        
+//        System.out.println(alSeatArrangement);
+        String s = alSeatArrangement.get(0).toString();
+//        System.out.println(alSeatArrangement.get(0));
+        for(int i=1;i<4;i++){
+            s=s+";";
+            s=s+alSeatArrangement.get(i);
+        }
+        s=s+"#";
+        System.out.println(s);
 //        System.out.println(player+"-"+cDistributor);
 //        System.out.println(player2+"-"+cDiscarder);
-        System.out.println("Player "+cDistributor.getPlayerNo()+" Distributes the cards and Player "+cDiscarder.getPlayerNo()+" Discards the first Card");
-        
+        System.out.println("Player "+cDistributor.getPlayerId()+" Distributes the cards and Player "+cDiscarder.getPlayerId()+" Discards the first Card");
+        return alSeatArrangement;
     }
     
     

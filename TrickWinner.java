@@ -12,7 +12,7 @@ import java.util.ArrayList;
  */
 public class TrickWinner extends CardsDistribution{
         
-        public void trickWinnerCalculation(){
+        public Card trickWinnerCalculation(){
             
             GenerateCards gCards = new GenerateCards();
             
@@ -46,7 +46,7 @@ public class TrickWinner extends CardsDistribution{
                     twc=c;
                 }
             }
-            int trickWinner = twc.getPlayerNo();
+            int trickWinner = twc.getPlayerId();
             System.out.println(twc);
             
 
@@ -54,5 +54,6 @@ public class TrickWinner extends CardsDistribution{
 //            System.out.println(p2);
 //            System.out.println(p3);
 //            System.out.println(p4);
+            return twc;
         }
 }

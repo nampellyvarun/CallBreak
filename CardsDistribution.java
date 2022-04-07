@@ -73,16 +73,16 @@ public class CardsDistribution {
 
 //Assigning a spade card to each player
         Card c = cardsList.get(allSpadeCards.remove(0));
-        c.setPlayerNo(1);
+        c.setPlayerId(1);
         player1List.add(c);
         c = cardsList.get(allSpadeCards.remove(0));
-        c.setPlayerNo(2);
+        c.setPlayerId(2);
         player2List.add(c);
         c = cardsList.get(allSpadeCards.remove(0));
-        c.setPlayerNo(3);
+        c.setPlayerId(3);
         player3List.add(c);
         c = cardsList.get(allSpadeCards.remove(0));
-        c.setPlayerNo(4);
+        c.setPlayerId(4);
         player4List.add(c);
        
         
@@ -90,22 +90,22 @@ public class CardsDistribution {
 //Assigning a face card to each player if player doesn't have a face card
         if(player1List.get(0).getIsFaceCard() == false){
             c = cardsList.get(nonSpadeFaceCards.remove(0));
-            c.setPlayerNo(1);
+            c.setPlayerId(1);
             player1List.add(c);
         }
         if(player2List.get(0).getIsFaceCard() == false){
             c = cardsList.get(nonSpadeFaceCards.remove(0));
-            c.setPlayerNo(2);
+            c.setPlayerId(2);
             player2List.add(c);
         }
         if(player3List.get(0).getIsFaceCard() == false){
             c = cardsList.get(nonSpadeFaceCards.remove(0));
-            c.setPlayerNo(3);
+            c.setPlayerId(3);
             player3List.add(c);
         }
         if(player4List.get(0).getIsFaceCard() == false){
             c = cardsList.get(nonSpadeFaceCards.remove(0));
-            c.setPlayerNo(4);
+            c.setPlayerId(4);
             player4List.add(c);
         }
         
@@ -125,7 +125,7 @@ public class CardsDistribution {
         while(!remainingCards.isEmpty()){
             if(player1List.size()!=13){
                 c = cardsList.get(remainingCards.remove(0));
-                c.setPlayerNo(1);
+                c.setPlayerId(1);
                 player1List.add(c);
             }
             else{
@@ -137,7 +137,7 @@ public class CardsDistribution {
         while(!remainingCards.isEmpty()){
             if(player2List.size()!=13){
                 c = cardsList.get(remainingCards.remove(0));
-                c.setPlayerNo(2);
+                c.setPlayerId(2);
                 player2List.add(c);
             }
             else{
@@ -149,7 +149,7 @@ public class CardsDistribution {
         while(!remainingCards.isEmpty()){
             if(player3List.size()!=13){
                 c = cardsList.get(remainingCards.remove(0));
-                c.setPlayerNo(3);
+                c.setPlayerId(3);
                 player3List.add(c);
             }
             else{
@@ -161,7 +161,7 @@ public class CardsDistribution {
         while(!remainingCards.isEmpty()){
             if(player4List.size()!=13){
                 c = cardsList.get(remainingCards.remove(0));
-                c.setPlayerNo(4);
+                c.setPlayerId(4);
                 player4List.add(c);
             }
             else{
